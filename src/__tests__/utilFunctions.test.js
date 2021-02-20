@@ -8,3 +8,19 @@ test('shortenText should not alter a string with less than 100 characters', ()=>
     expect(shortened).not.toHaveLength(longText.length);
     expect(shortened.slice(-3)).toBe('...')
 })
+
+test('wordCount should correctly count the number of words in a sentence', ()=>{
+    expect(wordCount(posts)).toBe(233);
+    });
+
+test('attachUserName should correctly attach a users full name to a post', ()=>{
+        const checkUsers = attachUserName(users, posts)
+        expect(checkUsers[0]).toHaveProperty('displayName')
+    }) 
+
+test('attachUserName should remove any post with no matching user', ()=>{
+    const newPosts = attachUserName(users, posts)
+    const deletedPost = posts[5]
+    expect(newPosts).not.toContainEqual(deletedPost)
+})
+
